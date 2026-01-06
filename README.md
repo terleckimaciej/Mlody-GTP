@@ -1,1 +1,1 @@
-# Młody-GTP
+# Młody GTP
