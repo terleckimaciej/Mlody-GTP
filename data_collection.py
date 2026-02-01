@@ -3,8 +3,8 @@ import os
 
 # config
 GENIUS_ACCESS_TOKEN = 'vHF_WTIZAk6saoLtXsXAyh7lxKaCLcKJwiqm_88gdBiXqNVIPCyVTL33KNkTdmbh'
-ARTIST_NAME = "Belmondo"
-OUTPUT_FILENAME = "input.txt"
+ARTIST_NAME = "Tede"
+OUTPUT_FILENAME = "input2.txt"
 
 def fetch_and_save_lyrics(token: str, artist_name: str, output_file: str):
     """
@@ -12,11 +12,11 @@ def fetch_and_save_lyrics(token: str, artist_name: str, output_file: str):
     and saves the lyrics to a single text file.
     """
     try:
-        # Initialize Genius API client
-        genius = lyricsgenius.Genius(token)
+        # Initialize Genius API client with increased timeout and retries
+        genius = lyricsgenius.Genius(token, timeout=20, retries=3)
         
-        # Disable verbose output to keep the console clean
-        genius.verbose = False
+        # Enable verbose output to track progress
+        genius.verbose = True
         # Optional: remove section headers like [Verse], [Chorus]
         genius.remove_section_headers = True 
 
