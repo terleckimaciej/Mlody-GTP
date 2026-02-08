@@ -6,33 +6,59 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 
+# ------------
+# Argument Parser
+# ------------
+parser = argparse.ArgumentParser(description='GPT Language Model')
+
+# I/O paths
+parser.add_argument('--input', type=str, default='assets/input/input2.txt', help='Path to input text file')
+parser.add_argument('--output', type=str, default='assets/output/output.txt', help='Path to output text file')
+parser.add_argument('--save_path', type=str, default='model_ckpt.pt', help='Path to save/load the model checkpoint')
+parser.add_argument('--load_url', type=str, default=None, help='Optional URL to load checkpoint from (e.g. GitHub raw)')
+parser.add_argument('--resume', action='store_true', help='Resume from checkpoint if available')
+
+# Hyperparameters
+parser.add_argument('--batch_size', type=int, default=64)
+parser.add_argument('--block_size', type=int, default=256)
+parser.add_argument('--max_iters', type=int, default=5000)
+parser.add_argument('--eval_interval', type=int, default=100)
+parser.add_argument('--learning_rate', type=float, default=3e-4)
+parser.add_argument('--eval_iters', type=int, default=200)
+parser.add_argument('--n_embd', type=int, default=384)
+parser.add_argument('--n_head', type=int, default=6)
+parser.add_argument('--n_layer', type=int, default=6)
+parser.add_argument('--dropout', type=float, default=0.2)
+
+args = parser.parse_args()
+
 # hyperparameters
-batch_size = 64 # how many independent sequences will we process in parallel? (B-atch)
-block_size = 256 # what is the maximum context length for predictions? (T-ime)
-max_iters = 5000
-eval_interval = 100 # printing training progress interval
-learning_rate = 3e-4
+batch_size = args.batch_size # how many independent sequences will we process in parallel? (B-atch)
+block_size = args.block_size # what is the maximum context length for predictions? (T-ime)
+max_iters = args.max_iters
+eval_interval = args.eval_interval # printing training progress interval
+learning_rate = args.learning_rate
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-eval_iters = 200 # nb of iters used for loss estimation
-n_embd = 384 # each token is represented as a vector of n_embd numbers (C-hannel)
-n_head = 6 # async attention instances in parallel nb 
-n_layer = 6 # transformer layers - attention later gets scaled by it (d)
-dropout = 0.2 # for regularization, model generalizes better by not considering 0.2 random connections
+eval_iters = args.eval_iters # nb of iters used for loss estimation
+n_embd = args.n_embd # each token is represented as a vector of n_embd numbers (C-hannel)
+n_head = args.n_head # async attention instances in parallel nb 
+n_layer = args.n_layer # transformer layers - attention later gets scaled by it (d)
+dropout = args.dropout # for regularization, model generalizes better by not considering 0.2 random connections
 # ------------
 
 print(f"Using device: {device}") #confirm if cuda is in use 
 
-#added an option to specify input and output files via command line arguments
-parser = argparse.ArgumentParser(description='GPT Language Model')
-parser.add_argument('--input', type=str, default='assets/input/input2.txt', help='Path to input text file')
-parser.add_argument('--output', type=str, default='assets/output/output.txt', help='Path to output text file')parser.add_argument('--save_path', type=str, default='model_ckpt.pt', help='Path to save/load the model checkpoint')
-parser.add_argument('--load_url', type=str, default=None, help='Optional URL to load checkpoint from (e.g. GitHub raw)')
-parser.add_argument('--resume', action='store_true', help='Resume from checkpoint if available')args = parser.parse_args()
-
 torch.manual_seed(2115)
 
-with open(args.input, 'r', encoding='utf-8') as f:
-    text = f.read()
+# Ensure output directory exists
+os.makedirs(os.path.dirname(args.output), exist_ok=True)
+
+try:
+    with open(args.input, 'r', encoding='utf-8') as f:
+        text = f.read()
+except FileNotFoundError:
+    print(f"Error: Input file found at {args.input}")
+    exit(1)
 
 # here are all the unique characters that occur in this text
 chars = sorted(list(set(text)))
