@@ -4,7 +4,7 @@ import os
 # config
 GENIUS_ACCESS_TOKEN = 'vHF_WTIZAk6saoLtXsXAyh7lxKaCLcKJwiqm_88gdBiXqNVIPCyVTL33KNkTdmbh'
 ARTIST_NAME = "Tede"
-OUTPUT_FILENAME = "input2.txt"
+OUTPUT_FILENAME = "assets/input/input2.txt"
 
 def fetch_and_save_lyrics(token: str, artist_name: str, output_file: str):
     """

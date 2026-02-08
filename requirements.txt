@@ -1,4 +1,4 @@
---index-url https://download.pytorch.org/whl/cu118
+--index-url https://download.pytorch.org/whl/cu118 # used on Geforce 1050 Ti and Collab GPU T4 
 torch
 torchvision
 torchaudio
