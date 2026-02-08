@@ -1,28 +1,33 @@
 import argparse
 import math
+import os
+import urllib.request
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
 
 # hyperparameters
-batch_size = 64 # how many independent sequences will we process in parallel?
-block_size = 256 # what is the maximum context length for predictions?
+batch_size = 64 # how many independent sequences will we process in parallel? (B-atch)
+block_size = 256 # what is the maximum context length for predictions? (T-ime)
 max_iters = 5000
-eval_interval = 100
+eval_interval = 100 # printing training progress interval
 learning_rate = 3e-4
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-print(f"Using device: {device}")
-eval_iters = 200
-n_embd = 384
-n_head = 6
-n_layer = 6
-dropout = 0.2
+eval_iters = 200 # nb of iters used for loss estimation
+n_embd = 384 # each token is represented as a vector of n_embd numbers (C-hannel)
+n_head = 6 # async attention instances in parallel nb 
+n_layer = 6 # transformer layers - attention later gets scaled by it (d)
+dropout = 0.2 # for regularization, model generalizes better by not considering 0.2 random connections
 # ------------
+
+print(f"Using device: {device}") #confirm if cuda is in use 
+
 #added an option to specify input and output files via command line arguments
 parser = argparse.ArgumentParser(description='GPT Language Model')
-parser.add_argument('--input', type=str, default='input.txt', help='Path to input text file')
-parser.add_argument('--output', type=str, default='more.txt', help='Path to output text file')
-args = parser.parse_args()
+parser.add_argument('--input', type=str, default='assets/input/input2.txt', help='Path to input text file')
+parser.add_argument('--output', type=str, default='assets/output/output.txt', help='Path to output text file')parser.add_argument('--save_path', type=str, default='model_ckpt.pt', help='Path to save/load the model checkpoint')
+parser.add_argument('--load_url', type=str, default=None, help='Optional URL to load checkpoint from (e.g. GitHub raw)')
+parser.add_argument('--resume', action='store_true', help='Resume from checkpoint if available')args = parser.parse_args()
 
 torch.manual_seed(2115)
 
@@ -214,12 +219,31 @@ print(sum(p.numel() for p in m.parameters())/1e6, 'M parameters')
 # create a PyTorch optimizer
 optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
 
+best_val_loss = float('inf')
+
+if args.load_url:
+    print(f"Downloading checkpoint from {args.load_url}...")
+    try:
+        local_filename, headers = urllib.request.urlretrieve(args.load_url, filename="downloaded_ckpt.pt")
+        m.load_state_dict(torch.load(local_filename, map_location=device))
+        print("Loaded model from URL.")
+    except Exception as e:
+        print(f"Failed to load from URL: {e}")
+elif args.resume and os.path.exists(args.save_path):
+    print(f"Resuming from {args.save_path}...")
+    m.load_state_dict(torch.load(args.save_path, map_location=device))
+
 for iter in range(max_iters):
 
     # every once in a while evaluate the loss on train and val sets
     if iter % eval_interval == 0 or iter == max_iters - 1:
         losses = estimate_loss()
         print(f"step {iter}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f}")
+        
+        if losses['val'] < best_val_loss:
+            best_val_loss = losses['val']
+            torch.save(m.state_dict(), args.save_path)
+            print(f"-> Saved best model (loss: {best_val_loss:.4f})")
 
     # sample a batch of data
     xb, yb = get_batch('train')
@@ -232,5 +256,5 @@ for iter in range(max_iters):
 
 # generate from the model
 context = torch.zeros((1, 1), dtype=torch.long, device=device)
-print(decode(m.generate(context, max_new_tokens=500)[0].tolist()))
+print(decode(m.generate(context, max_new_tokens=10000)[0].tolist()))
 open(args.output, 'w', encoding='utf-8').write(decode(m.generate(context, max_new_tokens=10000)[0].tolist()))
