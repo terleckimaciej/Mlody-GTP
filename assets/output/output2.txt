@@ -1,3 +1,4 @@
+default parameters - first run after implementing checkpoint feature
 Using device: cuda
 10.860446 M parameters
 step 0: train loss 5.2137, val loss 5.2132
@@ -22,7 +23,6 @@ step 900: train loss 1.6388, val loss 1.7623
 -> Saved best model (loss: 1.7623)
 step 1000: train loss 1.5711, val loss 1.7163
 -> Saved best model (loss: 1.7163)
-step 1100: train loss 1.5216, val loss 1.6783
 -> Saved best model (loss: 1.6783)
 step 1200: train loss 1.4788, val loss 1.6496
 -> Saved best model (loss: 1.6496)
@@ -55,3 +55,23 @@ object refcount : 3
 object type     : 0xa2a4e0
 object type name: KeyboardInterrupt
 object repr     : KeyboardInterrupt()
+
+Teraz marzeć do studenciki umpery
+Tak sama rzuci z tym kuponem, tak ci opcjonują – wczuwa przebista wiesz, widz techniki ta piękna wyziętach
+I watko, jeszcze kurdugi umać w korze, saxie na bo z kim mówię po misję
+Teraz to my!
+I to mi wi-zbądź runę moich matmi zbranki
+Niepłaś próbci z rustmachi ryjnych kim tu hipisan!
+To lecie miałem o sobie, styl!
+Ty taki se lajfy, ty ty, ty byś małeś tu i czymek do przerwuj się
+Ty utykać tylе na sobie - jankier Bankiem
+Na hałas, padamy, bankiemy jakae Robi – graj
+Przedziomym, że ja gredałem Lasazem daj
+A ja strojemy det i straszyszczy z recyzm jest 8pejś Kluckier Mordercasta
+I to my to ich wszyscy to prawda, wiesz? Ale jakieś ciekawałekby moje ryjemy
+A potarniecy się wyłowało, sypiesz się w tu czym luźno, więc
+Jeśląc środkie spektor część sypią, przekreczywąt wartwa syświeczność
+Tylko nie przychjąc tą nasolibie, takie marny hotczby
+Wielkie Joł, jetem Rigiem, highter
+Mój i oko usypieczki znów mi pocychotyk
+Im się wyczerz mi wiedzieć z czystem ogłów ogó
