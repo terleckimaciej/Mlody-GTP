@@ -1,3 +1,5 @@
+import argparse
+import math
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
@@ -6,20 +8,25 @@ from torch.nn import functional as F
 batch_size = 64 # how many independent sequences will we process in parallel?
 block_size = 256 # what is the maximum context length for predictions?
 max_iters = 5000
-eval_interval = 500
+eval_interval = 100
 learning_rate = 3e-4
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
+print(f"Using device: {device}")
 eval_iters = 200
 n_embd = 384
 n_head = 6
 n_layer = 6
 dropout = 0.2
 # ------------
+#added an option to specify input and output files via command line arguments
+parser = argparse.ArgumentParser(description='GPT Language Model')
+parser.add_argument('--input', type=str, default='input.txt', help='Path to input text file')
+parser.add_argument('--output', type=str, default='more.txt', help='Path to output text file')
+args = parser.parse_args()
 
-torch.manual_seed(1337)
+torch.manual_seed(2115)
 
-# wget https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt
-with open('input.txt', 'r', encoding='utf-8') as f:
+with open(args.input, 'r', encoding='utf-8') as f:
     text = f.read()
 
 # here are all the unique characters that occur in this text
@@ -146,8 +153,12 @@ class GPTLanguageModel(nn.Module):
         self.ln_f = nn.LayerNorm(n_embd) # final layer norm
         self.lm_head = nn.Linear(n_embd, vocab_size)
 
-        # better init, not covered in the original GPT video, but important, will cover in followup video
+        # better init, not covered in the original GPT video, but important, I applied it underneath
         self.apply(self._init_weights)
+        # apply special scaled init to the residual projections, per GPT-2 paper
+        for pn, p in self.named_parameters():
+            if pn.endswith('sa.proj.weight') or pn.endswith('ffwd.net.2.weight'):
+                torch.nn.init.normal_(p, mean=0.0, std=0.02/math.sqrt(2 * n_layer))
 
     def _init_weights(self, module):
         if isinstance(module, nn.Linear):
@@ -222,4 +233,4 @@ for iter in range(max_iters):
 # generate from the model
 context = torch.zeros((1, 1), dtype=torch.long, device=device)
 print(decode(m.generate(context, max_new_tokens=500)[0].tolist()))
-#open('more.txt', 'w').write(decode(m.generate(context, max_new_tokens=10000)[0].tolist()))
+open(args.output, 'w', encoding='utf-8').write(decode(m.generate(context, max_new_tokens=10000)[0].tolist()))
