@@ -1,0 +1,35 @@
+second run after implementing checkpoint feature
+the model was saved after 2300 steps with train loss 1.1927 and val loss 1.5481 (and no further improvment of validation)
+
+here, I resume from this point with tuned params:
+-dropout: 0.2 --> 0.35 (to enchance overfitting robustness - hopefully)
+-LR: 3e-4 --> 3e-5 (to not fall from the right minima)
+
+python gpt.py --resume --save_path assets/char_model/model_best.pt --dropout 0.35 --learning_rate 3e-5
+
+Using device: cuda
+10.860446 M parameters
+Resuming from assets/model_best.pt...
+step 0: train loss 1.1955, val loss 1.5502
+-> Saved best model (loss: 1.5502)
+step 100: train loss 1.1884, val loss 1.5498
+-> Saved best model (loss: 1.5498)
+step 200: train loss 1.1970, val loss 1.5514
+step 300: train loss 1.1921, val loss 1.5549
+step 400: train loss 1.1871, val loss 1.5545
+step 500: train loss 1.1918, val loss 1.5532
+step 600: train loss 1.1930, val loss 1.5555
+step 700: train loss 1.1858, val loss 1.5536
+Traceback (most recent call last):
+  File "/content/Mlody-GTP/gpt.py", line 276, in <module>
+    xb, yb = get_batch('train')
+             ^^^^^^^^^^^^^^^^^^
+  File "/content/Mlody-GTP/gpt.py", line 86, in get_batch
+    x, y = x.to(device), y.to(device)
+           ^^^^^^^^^^^^
+KeyboardInterrupt
+
+
+Model seems to have come to it's 'ceiling' - the tuned parameters had effect - the train loss stopped lovering itself as rapidly as in 
+previous run, so the overfitting has been minimised. Validation loss though does no longer converge, so I'm likely to 
+be unable to converge with fixed model size
