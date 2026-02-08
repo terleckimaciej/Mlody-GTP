@@ -29,6 +29,7 @@ parser.add_argument('--n_embd', type=int, default=384)
 parser.add_argument('--n_head', type=int, default=6)
 parser.add_argument('--n_layer', type=int, default=6)
 parser.add_argument('--dropout', type=float, default=0.2)
+parser.add_argument('--max_new_tokens', type=int, default=10000, help='Number of tokens to generate')
 
 args = parser.parse_args()
 
@@ -282,5 +283,5 @@ for iter in range(max_iters):
 
 # generate from the model
 context = torch.zeros((1, 1), dtype=torch.long, device=device)
-print(decode(m.generate(context, max_new_tokens=10000)[0].tolist()))
-open(args.output, 'w', encoding='utf-8').write(decode(m.generate(context, max_new_tokens=10000)[0].tolist()))
+print(decode(m.generate(context, max_new_tokens=args.max_new_tokens)[0].tolist()))
+open(args.output, 'w', encoding='utf-8').write(decode(m.generate(context, max_new_tokens=args.max_new_tokens)[0].tolist()))

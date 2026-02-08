@@ -1,0 +1,57 @@
+Using device: cuda
+10.860446 M parameters
+step 0: train loss 5.2137, val loss 5.2132
+-> Saved best model (loss: 5.2132)
+step 100: train loss 2.6546, val loss 2.6629
+-> Saved best model (loss: 2.6629)
+step 200: train loss 2.5912, val loss 2.6075
+-> Saved best model (loss: 2.6075)
+step 300: train loss 2.5467, val loss 2.5643
+-> Saved best model (loss: 2.5643)
+step 400: train loss 2.3607, val loss 2.3904
+-> Saved best model (loss: 2.3904)
+step 500: train loss 2.1144, val loss 2.1632
+-> Saved best model (loss: 2.1632)
+step 600: train loss 1.9437, val loss 2.0092
+-> Saved best model (loss: 2.0092)
+step 700: train loss 1.8096, val loss 1.8930
+-> Saved best model (loss: 1.8930)
+step 800: train loss 1.7277, val loss 1.8313
+-> Saved best model (loss: 1.8313)
+step 900: train loss 1.6388, val loss 1.7623
+-> Saved best model (loss: 1.7623)
+step 1000: train loss 1.5711, val loss 1.7163
+-> Saved best model (loss: 1.7163)
+step 1100: train loss 1.5216, val loss 1.6783
+-> Saved best model (loss: 1.6783)
+step 1200: train loss 1.4788, val loss 1.6496
+-> Saved best model (loss: 1.6496)
+step 1300: train loss 1.4353, val loss 1.6324
+-> Saved best model (loss: 1.6324)
+step 1400: train loss 1.4073, val loss 1.6100
+-> Saved best model (loss: 1.6100)
+step 1500: train loss 1.3778, val loss 1.6057
+-> Saved best model (loss: 1.6057)
+step 1600: train loss 1.3506, val loss 1.5935
+-> Saved best model (loss: 1.5935)
+step 1700: train loss 1.3226, val loss 1.5826
+-> Saved best model (loss: 1.5826)
+step 1800: train loss 1.2979, val loss 1.5720
+-> Saved best model (loss: 1.5720)
+step 1900: train loss 1.2761, val loss 1.5749
+step 2000: train loss 1.2468, val loss 1.5660
+-> Saved best model (loss: 1.5660)
+step 2100: train loss 1.2337, val loss 1.5640
+-> Saved best model (loss: 1.5640)
+step 2200: train loss 1.2100, val loss 1.5602
+-> Saved best model (loss: 1.5602)
+step 2300: train loss 1.1927, val loss 1.5481
+-> Saved best model (loss: 1.5481)
+step 2400: train loss 1.1795, val loss 1.5768
+step 2500: train loss 1.1537, val loss 1.5569
+step 2600: train loss 1.1339, val loss 1.5703
+object address  : 0x7cc5cf95d900
+object refcount : 3
+object type     : 0xa2a4e0
+object type name: KeyboardInterrupt
+object repr     : KeyboardInterrupt()
