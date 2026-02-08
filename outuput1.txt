@@ -1,0 +1,88 @@
+Using device: cuda
+10.860446 M parameters
+step 0: train loss 5.2137, val loss 5.2132
+step 100: train loss 2.6546, val loss 2.6629
+step 200: train loss 2.5912, val loss 2.6075
+step 300: train loss 2.5467, val loss 2.5643
+step 400: train loss 2.3607, val loss 2.3904
+step 500: train loss 2.1144, val loss 2.1632
+step 600: train loss 1.9437, val loss 2.0092
+step 700: train loss 1.8096, val loss 1.8930
+step 800: train loss 1.7277, val loss 1.8313
+step 900: train loss 1.6388, val loss 1.7623
+step 1000: train loss 1.5711, val loss 1.7163
+step 1100: train loss 1.5216, val loss 1.6783
+step 1200: train loss 1.4788, val loss 1.6496
+step 1300: train loss 1.4353, val loss 1.6324
+step 1400: train loss 1.4073, val loss 1.6100
+step 1500: train loss 1.3778, val loss 1.6057
+step 1600: train loss 1.3506, val loss 1.5935
+step 1700: train loss 1.3226, val loss 1.5826
+step 1800: train loss 1.2979, val loss 1.5720
+step 1900: train loss 1.2761, val loss 1.5749
+step 2000: train loss 1.2468, val loss 1.5660
+step 2100: train loss 1.2337, val loss 1.5640
+step 2200: train loss 1.2100, val loss 1.5602
+step 2300: train loss 1.1927, val loss 1.5481
+step 2400: train loss 1.1795, val loss 1.5768
+step 2500: train loss 1.1537, val loss 1.5569
+step 2600: train loss 1.1339, val loss 1.5703
+step 2700: train loss 1.1213, val loss 1.5460
+step 2800: train loss 1.1097, val loss 1.5707
+step 2900: train loss 1.0917, val loss 1.5667
+step 3000: train loss 1.0747, val loss 1.5686
+step 3100: train loss 1.0596, val loss 1.5680
+step 3200: train loss 1.0416, val loss 1.5551
+step 3300: train loss 1.0291, val loss 1.5743
+step 3400: train loss 1.0112, val loss 1.5771
+step 3500: train loss 1.0016, val loss 1.5729
+step 3600: train loss 0.9881, val loss 1.5745
+step 3700: train loss 0.9793, val loss 1.5834
+step 3800: train loss 0.9580, val loss 1.5957
+step 3900: train loss 0.9493, val loss 1.6042
+step 4000: train loss 0.9372, val loss 1.5964
+step 4100: train loss 0.9266, val loss 1.5933
+step 4200: train loss 0.9138, val loss 1.6026
+step 4300: train loss 0.9008, val loss 1.6073
+step 4400: train loss 0.8909, val loss 1.6113
+step 4500: train loss 0.8831, val loss 1.6281
+step 4600: train loss 0.8777, val loss 1.6035
+step 4700: train loss 0.8606, val loss 1.6304
+step 4800: train loss 0.8491, val loss 1.6198
+step 4900: train loss 0.8376, val loss 1.6401
+step 4999: train loss 0.8309, val loss 1.6264
+
+Chłopaki z klałki, taki za mną
+Lalk dawno punkt ci, towarli mno
+Patrzę nowa w nas weekend wapno
+A llub Cicho, liczą się za mną
+A to nie pytasz wie-o, z nimi z klatką
+To tu melanżu bez sznurgrnu speciallsa
+Dlatego hip hop tyle na to sam o kurewnie owierzyli i joł
+Sam pędziane z rodzu, mordo
+Ja mam bardzo tam 30-ezt asma
+Prowadź jestem anton, etap bardzo anto sprawdza
+Prawdziwa Tede i F11 V-1em chyba
+I w zaszczyWres omen, o to men, chuj mi cance
+Gdyby nie umierka jeszcze i inaprawdę
+Tylko tu mi mam gdzieś problem?
+Cztery nagrywasz mordę, tak by może coś popierdolić nie disco
+Niedale we mnie, a nie chce w byciu tak pierdolonie flaszkę
+Tede, jedzie measz tę midrzes, jest tępka czy mi być
+Stylówiczna na czy przepasach i aż ja chcę nagrać tu, chcę dobrze coś być
+Lepiej od tych i w ściebie gdy dom jebne poszustwęp!
+Niezaż więc, zależałem ale ty i wpadłek
+Niezależnie świat, tobą tylko przebacz, naprawię nie był upy słuchy je (Wybacz
+Shierzaj do mnie na kondych i jeden właścicie i je miasto
+A ten złoty bo znaczy, wiesz to wiecznie reguladeny rekualist
+I widziałem to to kurwa wieczny wieczny lajf
+I a ty ty te mi uli wiesz o tym, za tego szesns to mienic
+Parę granie tosków na siebie i jeden sram w tej sytuacji przebili
+To byłem szamo pod noszą byłem jak dzieci
+To nieznie są środkówy dzień niosą pioski
+Dobre jeździmy z nimi!
+Od chłopaków zwolnijków, której przekstrzeń
+Conie robisz? tki co naność
+Co, dawno najbardzo subić MC
+I są tysię mannerzję, bo ze mną pewność
+Przecież tak nazwę aż to
