@@ -1,5 +1,6 @@
---index-url https://download.pytorch.org/whl/cu118 # used on Geforce 1050 Ti and Collab GPU T4 
+--index-url https://download.pytorch.org/whl/cu118 # used on Geforce 1050 Ti and (quickly switched to) Collab GPU T4 
 torch
 torchvision
 torchaudio
 lyricsgenius==3.7.5
+tiktoken
