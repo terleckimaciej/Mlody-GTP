@@ -4,3 +4,5 @@ torchvision
 torchaudio
 lyricsgenius==3.7.5
 tiktoken
+transformers
+accelerate
