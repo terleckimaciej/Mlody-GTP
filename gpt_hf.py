@@ -90,7 +90,7 @@ data_collator = DataCollatorForLanguageModeling(
 
 training_args = TrainingArguments(
     output_dir=args.output_dir,
-    overwrite_output_dir=True,
+    # overwrite_output_dir=True,  # Removed to fix TypeError in newer transformers versions
     num_train_epochs=args.epochs,
     per_device_train_batch_size=args.batch_size,
     gradient_accumulation_steps=args.gradient_accumulation_steps, # Simulate larger batch size
