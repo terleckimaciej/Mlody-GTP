@@ -1,0 +1,667 @@
+!python gpt_tiktoken.py \
+  --n_embd 192 \
+  --n_head 4 \
+  --n_layer 4 \
+  --dropout 0.4 \
+  --batch_size 32 \
+  --learning_rate 5e-4 \
+  --max_iters 5000 \
+  --save_path assets/tiktoken_model/model_compact.pt
+
+  Using device: cuda
+21.175633 M parameters
+step 0: train loss 10.8502, val loss 10.8486
+-> Saved best model (loss: 10.8486)
+step 100: train loss 4.6158, val loss 4.6407
+-> Saved best model (loss: 4.6407)
+step 200: train loss 3.9825, val loss 4.0740
+-> Saved best model (loss: 4.0740)
+step 300: train loss 3.7547, val loss 3.8997
+-> Saved best model (loss: 3.8997)
+step 400: train loss 3.6034, val loss 3.7989
+-> Saved best model (loss: 3.7989)
+step 500: train loss 3.4642, val loss 3.6972
+-> Saved best model (loss: 3.6972)
+step 600: train loss 3.3480, val loss 3.6381
+-> Saved best model (loss: 3.6381)
+step 700: train loss 3.2406, val loss 3.5714
+-> Saved best model (loss: 3.5714)
+step 800: train loss 3.1514, val loss 3.5360
+-> Saved best model (loss: 3.5360)
+step 900: train loss 3.0782, val loss 3.4928
+-> Saved best model (loss: 3.4928)
+step 1000: train loss 2.9933, val loss 3.4442
+-> Saved best model (loss: 3.4442)
+step 1100: train loss 2.9409, val loss 3.4339
+-> Saved best model (loss: 3.4339)
+step 1200: train loss 2.8805, val loss 3.4191
+-> Saved best model (loss: 3.4191)
+step 1300: train loss 2.8257, val loss 3.4140
+-> Saved best model (loss: 3.4140)
+step 1400: train loss 2.7835, val loss 3.3804
+-> Saved best model (loss: 3.3804)
+step 1500: train loss 2.7302, val loss 3.3802
+-> Saved best model (loss: 3.3802)
+step 1600: train loss 2.6961, val loss 3.3760
+-> Saved best model (loss: 3.3760)
+step 1700: train loss 2.6445, val loss 3.3547
+-> Saved best model (loss: 3.3547)
+step 1800: train loss 2.6092, val loss 3.3629
+step 1900: train loss 2.5661, val loss 3.3466
+-> Saved best model (loss: 3.3466)
+step 2000: train loss 2.5304, val loss 3.3469
+step 2100: train loss 2.4957, val loss 3.3490
+step 2200: train loss 2.4572, val loss 3.3632
+step 2300: train loss 2.4221, val loss 3.3649
+step 2400: train loss 2.4022, val loss 3.3491
+step 2500: train loss 2.3654, val loss 3.3700
+step 2600: train loss 2.3349, val loss 3.3466
+step 2700: train loss 2.3005, val loss 3.3560
+step 2800: train loss 2.2690, val loss 3.3658
+step 2900: train loss 2.2559, val loss 3.3656
+step 3000: train loss 2.2254, val loss 3.3653
+step 3100: train loss 2.2093, val loss 3.3910
+step 3200: train loss 2.1762, val loss 3.3698
+step 3300: train loss 2.1642, val loss 3.3900
+step 3400: train loss 2.1230, val loss 3.3584
+step 3500: train loss 2.1156, val loss 3.3806
+step 3600: train loss 2.0886, val loss 3.3844
+step 3700: train loss 2.0630, val loss 3.3949
+step 3800: train loss 2.0708, val loss 3.4069
+step 3900: train loss 2.0263, val loss 3.4182
+step 4000: train loss 2.0152, val loss 3.3935
+step 4100: train loss 1.9956, val loss 3.4149
+step 4200: train loss 1.9852, val loss 3.4240
+step 4300: train loss 1.9694, val loss 3.4176
+step 4400: train loss 1.9447, val loss 3.4347
+step 4500: train loss 1.9264, val loss 3.4496
+step 4600: train loss 1.9205, val loss 3.4256
+step 4700: train loss 1.9017, val loss 3.4509
+step 4800: train loss 1.8828, val loss 3.4489
+step 4900: train loss 1.8637, val loss 3.4733
+step 4999: train loss 1.8509, val loss 3.4602
+Generating 10000 tokens...
+!
+
+Classic Mercedes Benz
+TER!
+Retro Mercedes Benz - #Hot Vinci
+Represent, Kikt się miał
+PLN myślę to teraz idę? Kato
+Znowu krzyz pali to i bluza jest niep
+(On pomyżę dzieje (ata)
+Lato!) Wagonka, kuftu (złynie)
+Sprawdź dek mix wybaczkie (Wielkie Joł!)
+Giby mnie ci do ciebie tam za piszętym (Rozkurwiebie robi)
+To vibe (mieść kurwa!)
+Moje kurwa zapomentuję swoje żystę
+Ha!
+Mówią, ty to ja nie chcę ty i kto ruchajęki, co moja tutaj?
+Dla mnie ja, mam czasu
+Nic z słucham dzmatą
+Nie nie być się z tym co drugi strzelają, a Ty karty
+Nie, się kto się raperzywie szczę, że to lepiej
+Liryczny Yankees
+Więc nowy życ pierdolą, ej, czego nie ziem kontroluję, ale czy u tym piecz, ej
+
+
+
+Wiem pękujedziemy z tym dosku, żyć, o-e, chcesz by być jak wszędzie
+Sam chce tylko tego nie przywiadomo, wszędzie
+ w telewizji u mnie iść, na skurwysyny
+
+Moje życie mam tak samo powolandziemy przykre, samochody
+Zanim w przyschodzi, nie raz tym pogrę na tą sam
+Zawsze serc pytaj gdzie to za tyłapał Twój wall-o, a ty zostań. Ale my i takie leci na miądzeklanko
+I kurwa... Sir Mich jąś na po RM, czyli drji
+Wróżkę wypknij ciąłeś prawdy za tą kolor
+Czegnę to liczy się spraw
+Że to jesz?) nie wieźśnić go
+Od lat tu i urwa, złonądują rozł (x2)
+Samochody), restauracjeSamochą, no i już chyba mogę na wychodzić
+
+(T) o dying for Mes it'scamp
+
+Maszynach, odech udrow Gęca ciebie pan?
+Ty masz, dupę słuchaj
+Popu za duże się oczyć
+Już wydzić, kumpli
+Ty felga joł, ziomki '99 kł
+I wykorzy tym kto grałki to dobrze, kraju
+A tak
+Co kto ten go nesseser
+Zielone z Instagramu
+L hurtem xsek, klucają znę
+To tylko jest la Mexico
+
+Aerona pią Bo tera! Psychooo!
+... ser, po co choć się stało cało lew, o bezansu
+Kontroluję, to wszystko jednym
+To z tym wojniosą audycie, więc jest zapędę
+Jestem do tego pod nosemaki mam
+
+
+W tego, ale dostałem są są leczmy z tobą
+Jestem z tamtym sypiączy
+Moje pozdrowienia się, życiąż takim klimak, kiedy żyjemy w porzą
+Co tak wyjmują? to? (Nic nie w co?)
+Znasz to
+Jak co nie gadali dla was tego, że mistrzki ej
+Przecieszyna czm totalnie Że ja mam tego jak światać panna
+Ale nic robią Polesztanku, nic zład kawałe- S von Jungingen
+To zjem, teraz TDF ziomką
+Jestem warczką, co cho? (z!), wszedłaszę biznes
+Ale nie z cierbie, kumplą dumni Mam
+A ja pierwsze solo rap na pierdolonym studio
+Jest sprawiam
+Nie sorry, a nie za czasu
+Jutas, mój szyją Morda
+Jak i nie artystępem kolejny
+Jeden 100 milion, po pierdolony po mazdro, twoje rapie to zrobię się wyśróg, wiesz o tobie nich
+Po co uwierz mi, i nie pcha do tytuł
+Tak będzie rapem, ale nie kochaj jest rap, liczę hajs to ty
+I nie da, wiem to, śmieją wrażenie
+Zawszeżyciąłem łosiłem tu z dedykest
+Ciem, człowiek drugi adapterach, po co zacznie tracimy ziom
+Jestem Timberlake'em dwadzem
+Wbijam
+I fajnij, jak wam je
+Będziesz jak wszyscy
+Przedł, mnie upadze tu loka, joł chuj cią
+Jestem tu dziszą RRX, z Porsche
+Zara, nagrywam albumach
+
+Będę w głowie kawałek, a dziś jest o mnie gul zawiesion tu, jazdem
+Jestem za czwrotka piję, dziesiężka
+
+Mam tak mam fart poszło, potem, potrzebić na niej
+Szczydzi głośnik, klasyką, a nie ćwiczę
+Wpadam senty – Najman Five Metallic Silver
+Po prostu kim kolejgro mnie liczbaż go spadochron
+Z wbijaliśleni sentymenty, jest, ja ryzybko
+Ty mówiłem wystplom, wiesznie jesz znikł
+A ile kariera, dziś nie dziś to jad to tak esce
+A mi okazji rusku
+Polska, klubu go niechiesię która kurwa płyt
+Mam bum człowie, gramy w maja, w kto jest czadęś, po dekadoma tak (Gram na toczą (Na nie wiele się nie pomału)
+Ludzie czułowiek jest narrator
+ER - już Indian
+Ej joł zapachato
+Kato, ZA znowu #pierdolenie N2
+Trochę sprzedać piłkna
+Zmieniałem byłem z nimy ten facet zawionem
+
+Popród, wpadam piękne
+Zanim zatrzixzerzete okienem znów tytułniać
+Spotkałem zwykłą wymuszczajętrziało
+Widzisz w tym braszam, szczegór by widzę przez to, w krzywo w sentypleksów
+
+Na tłołkie na dole jej
+Kolejne co kilka policz ripów jest
+To ma do W chłopakich jest takie, jakby
+ś przesyt? mogą się udawać się po Polsperach, choć wraże jak dziwią
+A zawsze z nimi zmienia, więc sprzeda miasta, dziś to pędziro
+Dla się webita... boheo - klę bulga
+Tu lewe bomba
+Pator nie piękny przegram koncertórych trzeba
+
+Dziewczyna odcinam pozdro, obok Hybry Blanca (agranej to na stole!)
+Kiedy całe widzę Ciebie, nie zeszła podryłatwiami, dnoj rozpierdol wszyscy
+Keep the limit
+NWJEDZIEMY!
+No
+Słuu, pull-up
+
+Bo już więc mówię: w twój chałycham
+Mam joł ziomek, nie ciągle na darmię pasie cało
+Kiedy to zapisie? To musisz wdź ze mnąć po pierwszej lidziejnym drzwię
+
+To miasto idzie
+WBraw, NWJ, wszystkie chłopak
+
+
+Sek nerwowo dwudziestu w rzeczy, w szcęścia
+
+Patrzę na bity, co jestem była jeszczeń, żeby wannie
+Znajebistych super mnie, to w słósądą, nie wiem, o co to
+To misji to wyprzedają, bo jedziesziesz miejsca na sSalutasz?
+Ty na kolej, polszystkich ziomki?
+Znasz je, słuchawki, właśnie masz numer, łatwo, świad, boz pamiętaj jest tyle
+Tu ludzie z niepodziszianok zwrotki mnie
+Ty zapa ci co? Jest ulega ciarą to kiwa
+Joł nie fabryki - z góry dotknij
+Ojnik to do z metu modą, to rz
+Posłuchaj, kurwa pod kumpel jakierę
+To więc wiesz co jak to ty to pizda wychodzi bo tył
+Ilu pa to lecz następna
+I jest właśnie w dłoni Moetne z tym problem
+Nie znamem i nieźle to w końcu życie, chcę za chwiedś
+A ty teraz się spotkać, to państwa na zabawnie, jak pojku
+Ty, ty modizał
+Chodzi do padnie, wypij ziomek, że czuj to nie ty potrafią
+Tak samo bardzo tu pas, truwa, co?
+Ście rączne ryj rzeczywiste nie umiesz wypły
+Zapanowałem typika
+Po to ma to był mnie, podatrzę cenię
+Takie dor to jest mordo, to budzę Warszawo, weź się gdzieś sekundę Kocham ten kole
+Kto szampanem
+To samo się zobaczkę?
+-Lubię i tak mogę, kurwa wciągnijnię
+-na-nas na konie, wbieram
+
+Salutwartać na to wspominam zakróbmy co zwalnia na tytuł, moja to o trywolat
+Dla tej imprezka tu wieczaj, do końca, wyciąż że jedna
+Paru ma
+Coś od nowe zwrotka sam, coś chlapka, a pociеgo wpół czego
+Wbierasz z dianał
+Tych go na niec nic ooor - rap jest – ja DOTLubisz i dom i patrosze
+Wszystko w meta i
+Moje ale
+To on wtedychodzie
+Wszystkim w Nowyhybel to
+
+Ty wiedzę pierdolnę, to idę , co mam w Polszystko
+Pierdolę na nich w noszą, że jak wchodzą
+Siedzą tu życiężko być
+I słuchają jak padłą
+I tak stałało rozbuję, że wybierać wychodzę to
+I się nowy rocka pokoch freestyle'emu
+Co zawsze się dla nas tu mi się z tym nie da
+Pozdrowienia tem po prostu z też jest sadzusz, górą
+Więdzie było raz się nie da radź wyciskowąć tym nic speie
+
+By było zamieniło było tu tną chę w chuj
+Wzię powietrosną było?
+Teraz das pędzmy Status Quattro
+Czowieci, twój, ale nie musisz być twój śród
+Licensywnimy eej, scenę na liże, jadę na imprezcu
+Robarki, przekurwa na melodią, dla wczuci
+Poprawiam do rurach
+Jesteś dupę, numer ten pan Jacek Graniek gra, całe!
+
+To ja jestem tu i Fiodor i Borys,ogoni sobie, rozumiesz?
+
+To jest rap, a ja, odmiem lepiej mordę
+Klasyczniętywnym wkur
+Jestem artystko się robić Hip-Hop na twój zimy, bóźda pod20
+
+Jeden wielka wróciszmy przewiedzieć
+Bo ty nie jest tak rymach, jednak, gangiem widzę
+Do dorfin
+Czynoży pośrów amen –łyny
+Monic tabun
+Pozdrawiam wciąga w pięć
+Jak Gośmyba tango, to nieżyć ze mnie dotąd miejsca, nie interesie w grobie
+Tyle melanż w nich w Schumacie, czasie e
+Nie mamy radiać nie udała
+Moja w stażyciała, nielega wywsze rytmie osóbuchnie
+Na nie myślą o nie chce tu
+W maję ich być gdyby znów, ja
+To dzieci będzie - dla Finest zioło
+Cjej lansę się zwywane
+Przez miasto leje bo wino, zmieniądę
+Ej ty, może Arkadia
+Ej, w za, Boj, patrze, stop, stereo ziom, ale wiesz, bo to wiesz
+Idę na lans i masz to powrot
+
+Swów w łap łap łap zażką
+Gucci Mane, dobrze pki
+O by na p do dziewcz, jedną odpierdolić jak ja level zobakt
+Nie ważne co wyje, co kto
+Nie mam żyję, kiedy inni życzęń zdny
+Trochę nie mam czasu
+Może to czuja by pomie każda
+Wiesz, że to włażna rzeczy
+Bo pizda powócił rap, to jedna flaszką
+I ty nie jest o czymś idziemy?
+Co dużo końcu zesja mógł chować szmat?
+A to jeszta dupa bawi, wo
+
+Trumną mogą się pozdrawiam się klasyparzca
+Z tym udać potem Twórekach
+Szare i ty te z niego?
+Ona ziom
+Szans, jest szmatą
+Rozkurwiam nie dla mnie widzory
+
+
+Weź się hajsy
+Dokładnie takie tak klubiejach
+Żyjalne, ej, w grobie
+Wali mnie, obchodzę i wejśniej bez konie-tór
+Drugi reprezentacji pojach, ta sprawdź ogrze
+To WOW!
+Co ty n
+Co kiedy
+Ny...
+
+Nagrywam, wiesz kusi, wiesz, ziom? Tak zadzałem kasz?
+Co ja? AKiedy nie grzejesz
+Co ja tutaj robię to piszę, jak ty
+Kolejny etap tu jak to skrrrt!
+Co tu mam tu się dziś nie-u?
+-mieni, bo to, kiedy o-i-o-o-o-o-o-o-odIA
+Z-o
+Zreleeej, pengęka, pojawieteszmij ojach
+Właśnie dotądme spadaszdź do góry jednym, zamkładam do studia
+W rapychylę z a ty się restartkn
+I stop n-yy stop
+
+ press playerenowa ci jap finał
+Smocha by na Instagramał mi siopa
+Sh-Shoppa, shoppa
+Twoja shoppa, shoppa, możeszansę dna lec bum jak Messer!
+Shoppa, shoppa, potrzebna mi szanuję
+Fopa
+Twoja dupa, coś bomba
+Shoppa,ęparty, możesz krzygnę, potrzebna mi urać siędę w "Ona chodź na Sporcie, Ta, weź spacer"
+Jakaliś pizdu z tym szkodać, zastawiam serca
+W sumie na którybutółem, słuchasz gościż pie mi penera menad bangla do moświą
+
+To płycie na prawda, bo płacę pędziesiąty nic
+Na pakiebie wszystko pędziwa wszystkim tytułbyś mnie, bo
+Raz chcesz i dzwoniźeby pimpom i splendor
+I w co tym w fabrykach
+Dawno kto osiąd, SMS muzyka, to jest ja dalej, daj, ty dz sweteran!
+Jak mi utenta, pozornij
+Tu góryzkiem zach by nimi, Ty i nie za mam ich
+Kiedyś na ja nich mówię tobie live
+Robię OLiSzanuję sobie kurde
+Bo potem żal, i mam styl w których rów
+Więc to przyjeju to na prawdziwo? Kto na sobieg i weź ogarnij to zaistnik
+Parat, pędzych?!
+Aluminium na gównie
+Dziewczyna, na studiu Maryska, mi Frytki
+
+To jebka sens, come oni - chce
+Kiedy ja widzisz już po nich pośedną tracę
+Jadę se igraszysków zszystko
+Sami casiler, szare pój z wasA pale i majtkofonem
+Oów ty nie bujasz się spraw o dystansem
+I z nie koncernoką ziomki
+Widziszą drogie restauresze
+I ma litość trochą
+Nie wszystko co chcę widzieć
+Garażna szlagiery na ha, bo Cię nie z aż takie więc teraz, patrzy
+Macie tak z bliski rap zielony patro
+Tak tak idzie na SND
+J, narzeka to jest Sir Michu
+Nieważne poprawiam się odlotół z nowość
+Samotów ze mną, to kiedy ukupi
+Taka zapęła cie kwestie po prostu
+Mówią o mnie całym gramy tonie
+Ale w tym systemieży w kurewkę niedom
+Moje życie, a ty wycie
+To następny, prostych
+I czego dla mnie jest człowiekowie
+Promomiewam, bit, odbiór
+Lato, zjadam do Gdzień, wiem, ja czuję, jeb – bezm (WuA-mOverflexyn jeden się kl, jest pami)
+V deszczu, a mi patrol to zamknij czas,órka
+Jaca dobro, to na desagram jestach
+Grasz ten, na co w uczycieka
+Nie ma, nie wiem kto u
+Cały ten kosijek więcej na wychodzę na w klubach
+Niezumiem, tam dla mnie, mówię, ty drugi
+Nie patrzę gryzie oplaszcz zanim zm wszyscy mam wam, że wielepam
+
+Tak jak to przed sobą
+Mówię to, k� straszne
+Ja piję tak moim fanemce pakie latamiętam
+W trzeba chamstwa, Ty to chcesz, w oczach
+Słegrasześ Paniczam dobra, kolo
+Jak słyszałeś numer do tak
+Każdego przynałem, że było polskazało za tysypał
+
+Chcesz o kurwa, więcej miej w poszedł przedał
+Liczę poglądzie winą stroną produkty w gry
+Co drugi pali oczyniach
+Funt, że a co bohądź disiałe
+I masz musisz ziomków z komando sensi?
+
+
+
+Śpię wie pogoniódź ziom, muszę podziogi chłopcom
+Do zła dużyja i wczyprza Woś ze stylem ści
+Tak sam tu jak na w całączach
+Trochę rap wydzę felach
+To życiu konkursów dobry
+Jak tego mi go podstydki
+I to z sensem, nie czekaj
+To nie byłem tym, ty kręcę uzbity
+Nie mogę skońcuchową to, a pierdolnij
+Kiedy ja kapierwsze sprawie - kiedy kiedy kimś turbo NWJ łebistą
+Mówię o mnie nie chce nicość
+Masakra, zagrajk
+Ja w wasze martwych za bangerówiej umsu chcesz o mi się pierdolić kolejny, chcą mówić pod źle między
+
+
+Każda tylko na to jak ty to w regu, że taka mój serialu
+Stage nami, nieba te te będzie w kurtce
+Ile nie wiadomo, boj mówię, eeej
+Bo muzyka, tak mózką mnie kasę pozwrotka
+Wiąlatę sobie, ja różna
+Wszystko jest łajba
+I hype ryja
+Zrobiła, potem kumplem, nie mówi, życie, podda, żeby wierzę
+Rap odbierz mi sępy
+I tak będzie, Polska na absacerem
+Ty mi, ty o je tu, crawo chce
+Ale ultrancknąłek
+Słowałać? Jaki jest ten wypierdala, to, w discoai ie
+Tylko ja bawiła na ciągnie
+Prasna wyciągnie – watnie
+I godzentacje na, wjezrokupie, to jak właśnie tak
+Parę cię lat
+Wiem szczęście, słuchać, ty jeb pierwszy smak człowiego, oczach!
+Poukładać muszę ją Prrrękę miejsce, chcę lick Jumpmanach
+Wszystko wielkie zawsze ma stukiwać są crazy
+Z WWA
+Na na Bali, wychodzi na buty
+Alkohater, wampany na pierwszej linii
+
+Znasz te fajki obokal, noszę wakajączę bezemy
+Jak bierz lubko dał mi waginalnie
+Kiedyś słyszało i walki
+A ty będzie se
+Robię rap tak samo samo i tylko jest coraz, wielu nowym Ciebie wieszroką
+Jestem sam na�łę, jak Magik
+
+Bo to możli mieć, i pierdolisz
+I w koczą stąd
+Jeżę, jeździą często o trykurtce
+Idę!
+ mi wino ubabawnie ma przejedne z patrzę
+Jak chyba, nie znam
+Czuję by się wiem, co czy dość Cię od nich skczy
+I jak na co grubli oprzy, pragniesz
+Wiesz przeptaje, co chcesz z nas nimi
+De facto nie mamy to jak ze została przedtem
+Ja i wpadaj tu
+I jak jak zatracz
+Potrę, gram w kończy niewiedostę
+Jak ja trwam wbija mi w krnątrzać salut
+O nich jest zaskach
+Boomile się na klasa, klak to wystarczy
+Ta, dla nas tamten rap
+#Hot16challenge, #Hot16challenge
+Ty, sika z chuja fura
+Kolejny pan
+Twój rakaczam na szafsku all adore
+Te canna
+I jestem
+Też jest o firmie
+I gdzie ta fura, uda
+Karma za
+, jest keep it's upadamy, PLNY
+Prawdań sam krywatka plala
+Są w takacznie
+WWA, aplą man
+Na nodze nowy but mam na co dzieje zepiej
+Czas piję najakurwa, smutaz, gdzie grasz jest hot sixteen nominacje całym konach
+W głowie, taka płaka płytała na pewna
+Cała o klarmo musisz wyciska mnie na co dzia dzieckiej
+Kurwa mojego Lambo?
+Bo (x...)!
+(Ta), doyo, Sancho)
+
+Ha, manyolska
+Moje życie jest na dojmą Sławka
+Voltowa - p licz to
+Po ryjeża kapszta klatka, mam fifalone gibonę z narobię. Tak zostrach
+Za przyjmaję - jest niebo, weź się obcią
+Może Kosi. Ziedam, joł, to Pol.A. Ci taa.R. to
+No to moi najwią są następni
+Co Ty szans, to znowu obchodzi, powiedzę jak żyją tu...
+
+Z S.T4, Daczego tu ja mówię jak
+Celebiorri" j ej joł
+Patrzysz - z nowy joł... PLNY w koncertach
+Przenie to jest moje Joł
+
+Tacy słyszę sami co? No to ziom?
+A Ty możesz z Polski na tę grzechach? Stodole!
+
+Zbyło? KLato, ludzie tytuł skurwysynach, menda mnie na moi
+Wielkie Joł znowu mnie nie będzie normalnie, nie znam sytuaczest
+U nas na z nich, Tylu teraz, graj
+Jak dziś to budzę do są po cożar jest
+To tej sytuacja, Śmiem, jest Bill Clinton
+Kiedy 
+Poprę trzechy się jakie tak nie jak by rap tu dziś, budzić przyżyjżyć na siłowa
+Lubię tak wydolno goni Moët?
+Na co się umarli z tytułą
+Całe żagle tak mi się dzieje się sprzedał
+Weekend w infaj
+Na miłość po WWA'u w planach
+Na czasie mam i tańcz nie da
+I tak muszę przeksem, boleje byli
+Za browar, wolna, wpierdolić ze mną, choć
+Vox Veritatis, wykracam champagne
+
+Lata lecę bity hol, że lubiĘ
+Zasady w stare jak karma
+Teraz trzeba styleką bawi. Chónąć trendy, chce zalonym świat
+Typy 24hawodzi spierdalam
+Szami zadłą kawałkach, sadać
+Znowu rusku, dwóż, jest klimat, obu
+Nie wiem czy
+Zielonezynamy albumy
+Sorry, jesteś fakty, to jest a Ty Maciek, nie nagrywamy mamy
+Ta bluetootha i opadnik, dzieś dla całe
+Morda, kont TDF i DSE,EM ( USGibic Macu
+Jedzie Panzerfast
+Jedziemy w to sobie to daj
+Właż, te Armanię naj, serce... i głównoży
+
+
+Włowiesz, robili maję wszystko
+I cały świat ze czas tu, pajnym jeszcze chce
+Mam do dresyółe czwam se, czapki
+Air Maxy Nike'i, Conversy trampki, body,ICH Aaaaa
+WUA
+K down
+Się socjet, jeszczeć
+Jeszczez ziomuś
+Wpina coś?
+Wkminisz pęce
+Jak przez to by z tym nami haseło na to, byłoby w BM-ki za mną
+
+Chuj złatrzywać pod król ch�jaciel – gamonić
+Niech psot, w dziś wyjebane losu rapu, nie dla ciebie, a się zmieniło
+Ogólnie te czwartkich dziś nie mów to z krogi
+Bo nie ma dzięki zdobywaćsetka
+X'em, ktoś ktoś licz Nike'a, kurde biedy gdy na dwie innym buntu, czeka
+I mam i wjechał wolą czas ten fejm, forever young"
+Chcą się to deal
+Jak ty i chciał je wiem, trwać że te jak mieć
+Chcę być jak lotne, aż to nie da jazdać... w na kabiał
+Zobaczyli różkę tu batalii nie robić i wrócić
+I wieszne chuj mi siebie, chcę wykuja widać
+I teraz tak chują żyć mi się wcięża
+I nie wyczeży do gracie do zajawkach
+Ty, kiedy za mnie wszystko co siedziała dzieciaksa
+I napierdalam w rymyżyję i melanż
+ża?! to nie tylko co razź!
+
+Jestem przypadkę, życie były życia kres kurwa!
+
+LecieŻycie na tym kie, gorzcu, żórzeb, czarzić się on zaje Nike'i
+Słuchają jak kłopoty, chirurgadę idą na taką
+Wyjebane wbiję, ale mójko ja, wciąż
+Jesteś nie dla mnie, chuj w cip!
+Ty masz? Ja chcą też się mieć
+Mały słuchać, ja tylko szaię, rozpierdolni
+
+Gadadzie że co jest pod studia życie lizać
+I w to serio
+Mam pierwszę za houndred, i Oci bch podgło
+Znam zwyczaj na nich wbacz
+John Rambo
+Pij robię swój w to i rap grzejmij
+Ona ma, rozprowadz mi, jest mi i prawdzmat, a ja jestem
+I widzę jestem dziś mówię to za rzeczy zapórz
+I tak naprawdę, że ja pierdole łosł, hajs też
+Jaki jesteś kurwo
+I jest robią o pieniądześć, życie na każdech dwóch
+I chciałbyś zrobić, przecież tak
+I bite zrozumą, nie kczę jej wiem
+Nie mogę dla mnie jesteś ty w moim w co w duchach
+Tam pado wkurwionach, w kto - znowu posypg, kiedy Keptn
+Bolid, co panie tu dziś jesteś sneakerheadem
+
+Nie chcę upokoty ideały
+Nieumiak sprzedajędzie
+Legendarny ziom, Drake w kurwa, człowieku, 360 czark
+W petrólowie mieć suko!
+O, jak ja robię ten
+Samochody, sorry, pszyzchodzę
+
+Kto rollerjeżdzie polach bawią się halo
+Bitś New Erę ci dekielenie, Barbie
+Ona jest to bosko
+Ej, wijesz w Jana kwestiają
+Klasycznej jest włama, a a jest to właśnie
+To Wielkie Joł, aiespodzianiebie go- Dobra
+Znajomi lajka to ona ją szafiorę
+Editankofixne, joł
+Pije sre te Polską sykładko
+Zrógłby olo! A kiedy dziś mi sprawne
+Gangad, zarobrze się wpadnie
+Truchaj tysz boy, pod które nie ma w sen
+Na prostu z Mro techno
+Znane wyłąłem znowu
+To będę jest jebanem Tede
+Ile ruch, będzie powiem, że w sobie to nie dla poradku
+Ten wyjebię
+Ty z tym samym albumem, patrz na o rodemu
+Moje na fejunia, rymuję to kwestia ze mną
+Wystarczy to jest tak ?
+Wybacz
+Tak, tylko że urozumiem
+W głowie poprzełytki, boliłeś jebnie, bo mam ze sny
+ x2
+Wykorobi się to w dupą drzwi
+
+Lubisz boom botędzie nam
+Maję są tu param
+Co robię daj czuję i robić tu
+Bo robimy tu dinero, kajłopot, utoda emugopcy
+Nie ma, ale nigdy nigdy mówią czuję się kolo laskał ich
+
+
+Erot, o standard, kaman
+Muzyka gra git, łap Łoooooo
+Kolo, naga bang
+Co uda trrr bezelna w żadne super
+Sztosie, gdzie Tede?
+Kiedy zoom
+
+ zero jest bomba na  Zaporągł kłady
+Prawda nas ubii przed nich, z kto miał koszmarek, to naprawd Trade CenterHot się jak Fenix, móg
+To wstań, na, garachunku
+Jaca się na w PRLans
+Jest kit
+
+Ooo... w kocham NWJ
+Kradł
+J dzień do! Ooo
