@@ -247,11 +247,18 @@ if args.resume and os.path.exists(args.save_path):
     
     # Check if checkpoint contains config (new format)
     if isinstance(checkpoint, dict) and 'config' in checkpoint:
-        print("Dataset config found in checkpoint. Updating globals...")
-        for k, v in checkpoint['config'].items():
-            if k in globals():
-                globals()[k] = v
-                print(f"  {k}: {v}")
+        print("Dataset config found in checkpoint. Updating model structure...")
+        config = checkpoint['config']
+        # Load structural parameters to ensure model architecture matches weights
+        n_embd = config['n_embd']
+        n_head = config['n_head']
+        n_layer = config['n_layer']
+        if 'block_size' in config: block_size = config['block_size']
+        if 'vocab_size' in config: vocab_size = config['vocab_size']
+        
+        # NOTE: We do NOT load 'dropout' here. This allows the user to change dropout
+        # via command line arguments during fine-tuning.
+        print(f"Loaded structure: n_embd={n_embd}, n_layer={n_layer}, n_head={n_head}")
     
 model = GPTLanguageModel()
 m = model.to(device)
@@ -286,6 +293,12 @@ elif args.resume and os.path.exists(args.save_path):
     else:
         # Legacy format
         m.load_state_dict(checkpoint)
+
+    # Force update learning rate from command line args
+    # This is crucial for fine-tuning when we want a smaller LR than the one in the checkpoint
+    for param_group in optimizer.param_groups:
+        param_group['lr'] = learning_rate
+    print(f"Forced learning rate to: {learning_rate}")
 
 for iter in range(start_iter, max_iters):
 
