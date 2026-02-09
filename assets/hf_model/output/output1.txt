@@ -1,0 +1,69 @@
+python gpt_hf.py --input assets/input/input2.txt --epochs 4 --learning_rate 5e-5 --batch_size 4 --gradient_accumulation_steps 8 --prompt "Ej joł"
+
+Using device: cuda
+Loading base model: flax-community/papuGaPT2
+Loading weights: 100% 149/149 [00:00<00:00, 4637.07it/s, Materializing param=transformer.wte.weight]
+The tied weights mapping and config for this model specifies to tie transformer.wte.weight to lm_head.weight, but both are present in the checkpoints, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning
+GPT2LMHeadModel LOAD REPORT from: flax-community/papuGaPT2
+Key                                     | Status     |  | 
+----------------------------------------+------------+--+-
+transformer.h.{0...11}.attn.masked_bias | UNEXPECTED |  | 
+transformer.h.{0...11}.attn.bias        | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Reading data from assets/input/input2.txt...
+Tokenizing data...
+Total tokens: 432101
+Starting training...
+  0% 0/212 [00:00<?, ?it/s]`loss_type=None` was set in the config but it is unrecognized. Using the default loss: `ForCausalLMLoss`.
+{'loss': '4.158', 'grad_norm': '2.616', 'learning_rate': '4.788e-05', 'epoch': '0.1896'}
+{'loss': '3.884', 'grad_norm': '1.482', 'learning_rate': '4.552e-05', 'epoch': '0.3791'}
+{'loss': '3.801', 'grad_norm': '1.455', 'learning_rate': '4.316e-05', 'epoch': '0.5687'}
+{'loss': '3.731', 'grad_norm': '1.832', 'learning_rate': '4.08e-05', 'epoch': '0.7583'}
+{'loss': '3.723', 'grad_norm': '1.48', 'learning_rate': '3.844e-05', 'epoch': '0.9479'}
+{'loss': '3.604', 'grad_norm': '1.274', 'learning_rate': '3.608e-05', 'epoch': '1.133'}
+{'loss': '3.594', 'grad_norm': '1.406', 'learning_rate': '3.373e-05', 'epoch': '1.322'}
+{'loss': '3.561', 'grad_norm': '1.452', 'learning_rate': '3.137e-05', 'epoch': '1.512'}
+{'loss': '3.535', 'grad_norm': '1.434', 'learning_rate': '2.901e-05', 'epoch': '1.701'}
+{'loss': '3.482', 'grad_norm': '1.455', 'learning_rate': '2.665e-05', 'epoch': '1.891'}
+{'loss': '3.432', 'grad_norm': '1.222', 'learning_rate': '2.429e-05', 'epoch': '2.076'}
+{'loss': '3.429', 'grad_norm': '1.27', 'learning_rate': '2.193e-05', 'epoch': '2.265'}
+{'loss': '3.458', 'grad_norm': '1.325', 'learning_rate': '1.958e-05', 'epoch': '2.455'}
+{'loss': '3.403', 'grad_norm': '1.281', 'learning_rate': '1.722e-05', 'epoch': '2.645'}
+{'loss': '3.383', 'grad_norm': '1.251', 'learning_rate': '1.486e-05', 'epoch': '2.834'}
+{'loss': '3.436', 'grad_norm': '1.379', 'learning_rate': '1.25e-05', 'epoch': '3.019'}
+{'loss': '3.362', 'grad_norm': '1.347', 'learning_rate': '1.014e-05', 'epoch': '3.209'}
+{'loss': '3.309', 'grad_norm': '1.315', 'learning_rate': '7.783e-06', 'epoch': '3.398'}
+{'loss': '3.34', 'grad_norm': '1.378', 'learning_rate': '5.425e-06', 'epoch': '3.588'}
+{'loss': '3.358', 'grad_norm': '1.257', 'learning_rate': '3.066e-06', 'epoch': '3.777'}
+{'loss': '3.363', 'grad_norm': '1.308', 'learning_rate': '7.075e-07', 'epoch': '3.967'}
+100% 212/212 [03:08<00:00,  1.20it/s]
+Writing model shards:   0% 0/1 [00:00<?, ?it/s]
+Writing model shards: 100% 1/1 [00:04<00:00,  4.19s/it]
+{'train_runtime': '201.3', 'train_samples_per_second': '33.52', 'train_steps_per_second': '1.053', 'train_loss': '3.539', 'epoch': '4'}
+100% 212/212 [03:21<00:00,  1.05it/s]
+Saving model to assets/hf_model...
+Writing model shards: 100% 1/1 [00:10<00:00, 10.71s/it]
+
+--- GENERATING SAMPLE ---
+Prompt: 'Ej joł'
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+
+Sample 1:
+--------------------
+Ej joł, tak sobie tu robię foty i widzę jak on się uśmiecha
+Ten miś jest taki w typie rapera co gra Tede'a ziomal. Bezczelny potwór z tym jednym mordo to żenada mnie nie zniesmacza no ale jestem artystą ja mówię kurwa se serio a tobie radzę żeby tego słuchali ci bitmeni ty weź ten gostek sam pozdro dla ciebie bo teraz mam bana za hajs elo witaj ooo moja tacie daj szansę człowieku x4easy-testuj czy też jesteś tamtą dziewczyną yh:DTeen Titans Why they’re real life here for me?Nieoczekiwany TDF na InstaStoriesTydzień (Have I done)Do boju hejtu popierdalamy!Tak więc wyhamuj jeszcz...pozdroooooojjuffyffcp6mfaktivibdi2wkhootx7_me
+--------------------------------------------------
+
+Sample 2:
+--------------------
+Ej joł, ziom
+Jestem Tuzin Gibka co to za mafia ta i inne bauns'y na eBayu! Buhhh- buuuuhahaha to nie teges z tej strony pozdrawiam ciebie koleś ze stalowowolskiego osiedla ten koleżka wiesz tak mnie znają wiem dawno ich poznałem dziś w sumie chyba nawet oni mi już nic poza tym rapu nigdy więcej odeszli od mainstreamu jest tylko gibberiaa ale ja o nich tyle słyszałem kiedyś jak graliśmy koncert znowu się pokończyli nas tu morda zamknęli znów mamy problem teraz możemy przestać grać przecież żyjemy tą melodią jesteśmy tam gdzie my bog wie ktoś kto odszedł? mam was wszystkich moich przyjaciół każdy chciał być legendą był wielki jestem nikim więc kurwa proszę zróbcie żeby stał wam pomnik prawda że wy wasze życie  same sentymenty nam odejmowałoście jebiemy tego dalej szkoda było gadać taki los jaki dał ci mój człowiek niech on pisze
+--------------------------------------------------
+
+Sample 3:
+--------------------
+Ej joł ziomek!
+Co się u nas dzieje? Od rana do wieczora, w każdy piątek i sobotę tak to wygląda - od nowa balangi we wszystkich klubach nocnego rapu. Tańczymy dla ciebie palanty po polsku na majka bity z beefu bez polotu o co chodzi?! O kurwa człowieku ty... jaram ten czas za tobą jak jakiś koks Tedeusz Celuchny lub Erol Sir Mich Turek Jacek Delimiter; nie da rady dziś inaczej wyjść niż przez drzwi balkonowe....Nie jestem kujonem czy jakimś szmalem no ale mam dość życia tutaj teraz (pogadam kiedyś coś...)I nic mi nikt kto by mógł tego słuchac tu dzisiaj już więcej tych gówniarzy ze sceny instrumentalno-dyskotekowej wam wybaczę bo są płytcy ode mnie..Tak jest dokładnie hahhhee'm te czasy dawno temu gdy nawet psy szczekaliście że będą fuckiem se ludzie mieli was
+--------------------------------------------------
