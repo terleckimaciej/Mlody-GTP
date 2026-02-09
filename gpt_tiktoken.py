@@ -237,6 +237,22 @@ class GPTLanguageModel(nn.Module):
             idx = torch.cat((idx, idx_next), dim=1) # (B, T+1)
         return idx
 
+# Check for checkpoint to update config before model init
+start_iter = 0
+best_val_loss = float('inf')
+
+if args.resume and os.path.exists(args.save_path):
+    print(f"Resuming from {args.save_path}...")
+    checkpoint = torch.load(args.save_path, map_location=device)
+    
+    # Check if checkpoint contains config (new format)
+    if isinstance(checkpoint, dict) and 'config' in checkpoint:
+        print("Dataset config found in checkpoint. Updating globals...")
+        for k, v in checkpoint['config'].items():
+            if k in globals():
+                globals()[k] = v
+                print(f"  {k}: {v}")
+    
 model = GPTLanguageModel()
 m = model.to(device)
 # print the number of parameters in the model
@@ -245,21 +261,33 @@ print(sum(p.numel() for p in m.parameters())/1e6, 'M parameters')
 # create a PyTorch optimizer
 optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate,  weight_decay=0.1)
 
-best_val_loss = float('inf')
-
 if args.load_url:
     print(f"Downloading checkpoint from {args.load_url}...")
     try:
         local_filename, headers = urllib.request.urlretrieve(args.load_url, filename="downloaded_ckpt.pt")
-        m.load_state_dict(torch.load(local_filename, map_location=device))
+        url_checkpoint = torch.load(local_filename, map_location=device)
+        if isinstance(url_checkpoint, dict) and 'model_state_dict' in url_checkpoint:
+             m.load_state_dict(url_checkpoint['model_state_dict'])
+        else:
+             m.load_state_dict(url_checkpoint)
         print("Loaded model from URL.")
     except Exception as e:
         print(f"Failed to load from URL: {e}")
 elif args.resume and os.path.exists(args.save_path):
-    print(f"Resuming from {args.save_path}...")
-    m.load_state_dict(torch.load(args.save_path, map_location=device))
+    # We already loaded 'checkpoint' above
+    if isinstance(checkpoint, dict) and 'model_state_dict' in checkpoint:
+        m.load_state_dict(checkpoint['model_state_dict'])
+        if 'optimizer_state_dict' in checkpoint:
+            optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+        if 'iter' in checkpoint:
+            start_iter = checkpoint['iter']
+        if 'best_val_loss' in checkpoint:
+            best_val_loss = checkpoint['best_val_loss']
+    else:
+        # Legacy format
+        m.load_state_dict(checkpoint)
 
-for iter in range(max_iters):
+for iter in range(start_iter, max_iters):
 
     # every once in a while evaluate the loss on train and val sets
     if iter % eval_interval == 0 or iter == max_iters - 1:
@@ -268,7 +296,21 @@ for iter in range(max_iters):
         
         if losses['val'] < best_val_loss:
             best_val_loss = losses['val']
-            torch.save(m.state_dict(), args.save_path)
+            checkpoint = {
+                'model_state_dict': m.state_dict(),
+                'optimizer_state_dict': optimizer.state_dict(),
+                'config': {
+                    'n_embd': n_embd, 
+                    'n_head': n_head, 
+                    'n_layer': n_layer,
+                    'block_size': block_size,
+                    'vocab_size': vocab_size,
+                    'dropout': dropout
+                },
+                'iter': iter,
+                'best_val_loss': best_val_loss,
+            }
+            torch.save(checkpoint, args.save_path)
             print(f"-> Saved best model (loss: {best_val_loss:.4f})")
 
     # sample a batch of data
