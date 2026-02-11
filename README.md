@@ -1,4 +1,5 @@
-# Mlody-GTP: Evolution of Generative AI Architectures
+# Mlody-GTP
+### From Scratch to Pretrained: A Study in Training Small Language Models
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat-square&logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-red?style=flat-square&logo=pytorch&logoColor=white) ![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Transformers-yellow?style=flat-square&logo=huggingface&logoColor=white) ![Google Colab](https://img.shields.io/badge/Google%20Colab-Computational%20Power-F9AB00?style=flat-square&logo=googlecolab&logoColor=white) ![OpenAI](https://img.shields.io/badge/OpenAI-Tiktoken-green?style=flat-square&logo=openai&logoColor=white)
 
