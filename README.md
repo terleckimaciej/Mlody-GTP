@@ -47,24 +47,37 @@ The file was self acquired via Genius API, one can seamlessly collect its artist
 The following snippets demonstrate the evolution of the model's capabilities:
 
 ### 1. Character-Level (Visual Imitation)
-> "Visual imitation only. Looks like lyrics from far away, gibberish up close."
+> "[...]"
 
 ```text
-rustmachi ryjnych kim tu hipisan! / To lecie miałem o sobie
+Chłopaki z klałki, taki za mną
+Lalk dawno punkt ci, towarli mno
+Patrzę nowa w nas weekend wapno
+A llub Cicho, liczą się za mną...
 ```
 
 ### 2. Tiktoken/BPE (Word Salad)
-> "Real words, no thoughts. Random association of concepts."
+> "[...]]"
 
 ```text
-Retro Mercedes Benz - #Hot Vinci / Represent, Kikt się miał...
+W tego, ale dostałem są są leczmy z tobą
+Jestem z tamtym sypiączy
+Moje pozdrowienia się, życiąż takim klimak, kiedy żyjemy w porzą
+Co tak wyjmują? to? (Nic nie w co?)
+Znasz to...
 ```
 
-### 3. Hugging Face Fine-Tuning (Coherence)
-> "Full stylistic adoption. Coherent sentences."
+### 3. Hugging Face Fine-Tuning 
+> "[...]]"
 
 ```text
-Ej joł ziomek! Co się u nas dzieje? Od rana do wieczora...
+Ej joł, ziom
+Jestem Tuzin Gibka co to za mafia ta i inne bauns'y na eBayu!
+Buhhh- buuuuhahaha to nie teges z tej strony
+pozdrawiam ciebie koleś ze stalowowolskiego osiedla
+ten koleżka wiesz tak mnie znają wiem dawno ich poznałem
+dziś w sumie chyba nawet oni mi już nic poza tym rapu
+nigdy więcej odeszli od mainstreamu...
 ```
 
 ## Usage
