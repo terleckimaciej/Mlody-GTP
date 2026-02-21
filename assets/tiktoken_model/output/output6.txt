@@ -1,0 +1,133 @@
+a run with custom tokenizer for polish loaded from HF
+
+!python gpt_tiktoken.py --tokenizer custom --tokenizer_path assets/tiktoken_model/polish_gpt2/tokenizer.json --n_layer 4 --n_head 4 --n_embd 64 --dropout 0.3 --block_size 128 --batch_size 64 --max_iters 5000 --eval_interval 250 --save_path assets/tiktoken_model/model_nano_polish.pt
+
+Using device: cuda
+Using Custom Tokenizer. Vocab size: 50257
+6.690641 M parameters
+step 0: train loss 10.8493, val loss 10.8507
+-> Saved best model (loss: 10.8507)
+step 250: train loss 7.0755, val loss 7.1963
+-> Saved best model (loss: 7.1963)
+step 500: train loss 6.2147, val loss 6.5206
+-> Saved best model (loss: 6.5206)
+step 750: train loss 5.6156, val loss 6.1464
+-> Saved best model (loss: 6.1464)
+step 1000: train loss 5.1626, val loss 5.9696
+-> Saved best model (loss: 5.9696)
+step 1250: train loss 4.7971, val loss 5.8815
+-> Saved best model (loss: 5.8815)
+step 1500: train loss 4.4789, val loss 5.8907
+step 1750: train loss 4.2002, val loss 5.9180
+step 2000: train loss 3.9806, val loss 5.9645
+step 2250: train loss 3.7746, val loss 6.0445
+step 2500: train loss 3.5887, val loss 6.1340
+Traceback (most recent call last):
+  File "/content/Mlody-GTP/gpt_tiktoken.py", line 346, in <module>
+    losses = estimate_loss()
+             ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/content/Mlody-GTP/gpt_tiktoken.py", line 136, in estimate_loss
+    losses[k] = loss.item()
+                ^^^^^^^^^^^
+KeyboardInterrupt
+
+!python gpt_tiktoken.py --tokenizer custom --tokenizer_path assets/tiktoken_model/polish_gpt2/tokenizer.json --n_layer 4 --n_head 4 --n_embd 64 --dropout 0.3 --block_size 128 --max_new_tokens 500 --resume --save_path assets/tiktoken_model/model_nano_polish.pt
+
+Using device: cuda
+Using Custom Tokenizer. Vocab size: 50257
+Resuming from assets/tiktoken_model/model_nano_polish.pt...
+Dataset config found in checkpoint. Updating model structure...
+Loaded structure: n_embd=64, n_layer=4, n_head=4
+6.690641 M parameters
+Forced learning rate to: 0.0003
+step 1300: train loss 4.7155, val loss 5.8775
+-> Saved best model (loss: 5.8775)
+step 1400: train loss 4.5898, val loss 5.8893
+step 1500: train loss 4.4674, val loss 5.8826
+step 1600: train loss 4.3648, val loss 5.8989
+step 1700: train loss 4.2640, val loss 5.9155
+step 1800: train loss 4.1495, val loss 5.9215
+step 1900: train loss 4.0522, val loss 5.9626
+Traceback (most recent call last):
+  File "/content/Mlody-GTP/gpt_tiktoken.py", line 375, in <module>
+    optimizer.step()
+  File "/usr/local/lib/python3.12/dist-packages/torch/optim/optimizer.py", line 526, in wrapper
+    out = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/optim/optimizer.py", line 81, in _use_grad
+    ret = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/optim/adam.py", line 248, in step
+    adam(
+  File "/usr/local/lib/python3.12/dist-packages/torch/optim/optimizer.py", line 151, in maybe_fallback
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/optim/adam.py", line 970, in adam
+    func(
+  File "/usr/local/lib/python3.12/dist-packages/torch/optim/adam.py", line 773, in _multi_tensor_adam
+    1 - beta1 ** _get_value(step) for step in device_state_steps
+                 ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/optim/optimizer.py", line 96, in _get_value
+    return x.item() if isinstance(x, torch.Tensor) else x
+           ^^^^^^^^
+KeyboardInterrupt
+
+
+!python gpt_tiktoken.py --tokenizer custom --tokenizer_path assets/tiktoken_model/polish_gpt2/tokenizer.json --n_layer 4 --n_head 4 --n_embd 64 --dropout 0.3 --block_size 128 --max_iters 0 --resume --save_path assets/tiktoken_model/model_nano_polish.pt --max_new_tokens 500
+
+Using device: cuda
+Using Custom Tokenizer. Vocab size: 50257
+Resuming from assets/tiktoken_model/model_nano_polish.pt...
+Dataset config found in checkpoint. Updating model structure...
+Loaded structure: n_embd=64, n_layer=4, n_head=4
+6.690641 M parameters
+Forced learning rate to: 0.0003
+Generating 500 tokens...
+ normabią robić, tylko tam
+Mam pierwszy patrz, na płyty uwieja w tejjedno baj noga zobowiązani, przekaz
+Polski tu po to jak wszystkich śpię
+Gość w rogu z sobą o pierwszej pożyurach
+
+ słucham, do ciebie jak który ma przed mną, kiedy się mówią o siebie ibure
+Chcą2)Żeby?
+To po mieście czują
+Ja czany, co wie
+Joł ziomuy - joł, s wypsze mógł być jak chcesz
+Wyobraź sobie lecimy jeba jej
+Gdzie możesz mieć podwójewska Operacyjnego to kwestia rachunek marnkę
+Chcę widzieć a w towarzystwie, dwa że jest nasz spkach wizja milion co jest tu
+Mówią doodpor wymiesza
+Stop wszędzie, da i na butele
+Całe to ty, to kidąeeeertę
+Wyps, sztos, bastwo
+Szastau droższy chociaż � rachunki czuwa (Dzień prełowacie)
+Od nas,Rozumiesz se po pierwszej mi się o tym
+Żeby sprawdzić, to
+Hip!
+Enach tra miejska to nie zwolni ziomek duży
+Ty, jaunf
+Coś, nie Chory, oni respekt, haj!
+TDF do tom AS tonie
+
+Ej leje-achheady Czytasz ich i głębi
+Poranluja eu
+ha, ten jest jak o bit
+Esuj to ryjIREtom!Tede, łeb ziobers RM, cho łzy
+I aor to rewe grać tu tąone
+Ja Kozaka kurwa lewe towar w zęby PSzampa, piapomnijzi, tutaj schodzę
+Fło Vox4 Alo tyki Z Namik
+Styl się kur HC
+(coble jest byłby chwila ma ryjał)
+A i tak mówić se pełnym lat w sobie pow, na wosz
+jotka; starcza
+Hty za domach w ry grą rozgrynku niżczy komercja
+ trwa? nadzieję
+Mita też
+Mujam stało?Luwą (OdlakJeśli mogęParębą chlinia, mam, ja i drive)
+Nie odbiera kawałki graj, coss poważny Babinymstwem
+Nikt naKsięobi bomPerlna Sam nigdy napraszam cię wypierda Austrasiłą, dachuma
+Noesele i sam zsiabiona zajawgłem nie chce z tobą, wieszow
+Ohow lecąet ode mnie poza tym, ty o – miłość, ja
