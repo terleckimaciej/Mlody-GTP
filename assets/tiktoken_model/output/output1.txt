@@ -1,3 +1,6 @@
+first run of a model using OpenAI's tiktoken tokenizer - classic BPE instead characterlevel 
+python gpt_tiktoken.py --batch_size 32 --block_size 256 --max_iters 4000 --save_path assets/tiktoken_model/model_best.pt
+
 Using device: cuda
 49.386577 M parameters
 step 0: train loss 10.9053, val loss 10.9011

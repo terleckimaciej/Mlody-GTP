@@ -14,6 +14,8 @@ parser = argparse.ArgumentParser(description='GPT Language Model (Tiktoken)')
 
 # I/O paths
 parser.add_argument('--input', type=str, default='assets/input/input2.txt', help='Path to input text file')
+parser.add_argument('--tokenizer', type=str, default='auto', help='Which tokenizer to use: "tiktoken" (default OpenAI) or "custom" (trained from data). "auto" checks if custom exists.')
+parser.add_argument('--tokenizer_path', type=str, default='assets/tiktoken_model/tokenizer.json', help='Path to custom tokenizer json file')
 parser.add_argument('--output', type=str, default='assets/tiktoken_model/output.txt', help='Path to output text file')
 parser.add_argument('--save_path', type=str, default='assets/tiktoken_model/model_ckpt.pt', help='Path to save/load the model checkpoint')
 parser.add_argument('--load_url', type=str, default=None, help='Optional URL to load checkpoint from (e.g. GitHub raw)')
@@ -63,11 +65,48 @@ except FileNotFoundError:
     print(f"Error: Input file found at {args.input}")
     exit(1)
 
-# Tiktoken encoding
-enc = tiktoken.get_encoding("gpt2")
-vocab_size = enc.n_vocab
-encode = lambda s: enc.encode(s, allowed_special={"<|endoftext|>"})
-decode = lambda l: enc.decode(l)
+# ---------------------------------------------------------
+# Tokenizer Handling Logic
+# ---------------------------------------------------------
+
+use_custom_tokenizer = False
+
+if args.tokenizer == 'custom':
+    use_custom_tokenizer = True
+elif args.tokenizer == 'auto':
+    if os.path.exists(args.tokenizer_path):
+        use_custom_tokenizer = True
+        print(f"Info: Found custom tokenizer at {args.tokenizer_path}, using it.")
+    else:
+        print(f"Info: Custom tokenizer not found at {args.tokenizer_path}, falling back to OpenAI tiktoken.")
+
+# Setup Encode/Decode functions
+if use_custom_tokenizer:
+    try:
+        from tokenizers import Tokenizer
+        tokenizer = Tokenizer.from_file(args.tokenizer_path)
+        vocab_size = tokenizer.get_vocab_size()
+        
+        # Enforce <|endoftext|> handling or simple encoding
+        # For simple char/word level models often built from scratch, strict special token handling might differ.
+        # But here we just use the raw IDs.
+        encode = lambda s: tokenizer.encode(s).ids
+        decode = lambda l: tokenizer.decode(l)
+        print(f"Using Custom Tokenizer. Vocab size: {vocab_size}")
+    except ImportError:
+        print("Error: 'tokenizers' library not installed. Please pip install tokenizers.")
+        exit(1)
+    except Exception as e:
+        print(f"Error loading custom tokenizer: {e}")
+        exit(1)
+else:
+    # Fallback to Original Tiktoken
+    import tiktoken
+    enc = tiktoken.get_encoding("gpt2")
+    vocab_size = enc.n_vocab
+    encode = lambda s: enc.encode(s, allowed_special={"<|endoftext|>"})
+    decode = lambda l: enc.decode(l)
+    print(f"Using OpenAI Tiktoken (gpt2). Vocab size: {vocab_size}")
 
 # Train and test splits
 data = torch.tensor(encode(text), dtype=torch.long)
