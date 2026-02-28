@@ -1,3 +1,7 @@
+Model doesn't seem to have updated it's weights too much - mainly based on the fact that the generated text is prose, no \n in the text.
+This seem to tell us that the "wikipedia style" hasn't been taken over by the verse-style, except for the first \n (maybe for the token "Ej jol", that likely doesn't
+appear in wikipedia, the model was trained on and is mentioned by Tede freqently). I try to address this in the next run
+
 python gpt_hf.py --input assets/input/input2.txt --epochs 4 --learning_rate 5e-5 --batch_size 4 --gradient_accumulation_steps 8 --prompt "Ej joł"
 
 Using device: cuda
