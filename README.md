@@ -96,14 +96,31 @@ Ultimately, shifting to BPE (regardless of the specific tokenizer) failed to pro
 To make BPE work effectively, we would need a dataset 100x larger (hundreds of megabytes, not 1MB). Since we cannot generate more songs by the artist, the only way to scale up without changing the dataset is to change the brain: **Transfer Learning**. We need a model that *already* read the entire Polish internet, so we only have to teach it *style* and *rhyme*, not the entire language from scratch.
 ---
 
-TO DO: w ponizszej sekcji oprocz poprawek dodac opis 1st run.
 ### Stage 3: Transfer Learning (The Style Transfer)
 *   **Model:** [`gpt_hf.py`](gpt_hf.py)
 *   **Architecture:** Pre-trained GPT-2 (`flax-community/papuGaPT2`)
 *   **Tokenization:** Pre-trained GPT-2 Tokenizer
 *   **Concept & Goal:** Leverage a model pre-trained on massive Polish corpora (Wikipedia, etc.) to handle grammar and meaning, then fine-tune it to "un-learn" its formal tone and adopt the artist's specific style (slang, flow, entities).
 
-**Output Example:** ([`assets/hf_model/output/output2.txt`](assets/hf_model/output/output2.txt))
+**Why this choice:**
+We hit a wall with data volume. Our 1MB dataset was enough to learn letters (Stage 1) but too small to learn a language (Stage 2). 
+Instead of teaching a baby to speak from scratch using only rap lyrics, we take an educated adult (a pre-trained model that already knows Polish grammar, vocabulary) and "taught it to rap." 
+This way, the model uses our small dataset **solely to learn style, slang, flow and form of a lyric**.
+
+
+**Output Example (Early Epochs):** ([`assets/hf_model/output/output1.txt`](assets/hf_model/output/output1.txt))
+*   **Context:** We first tried running just a few epochs (4) to see the early result.
+```text
+Ej joł, ziom
+Jestem Tuzin Gibka co to za mafia ta i inne bauns'y na eBayu! Buhhh- buuuuhahaha to nie teges z tej strony pozdrawiam ciebie koleś ze stalowowolskiego osiedla ten koleżka wiesz tak mnie znają wiem dawno ich poznałem...
+```
+**Observations:**
+*   **Wiki-Bias (Prose vs. Verse):** At this early stage, the model speaks in prose. Since its base training comes from encyclopedic texts (Wikipedia), it hasn't yet learned the concept of a "verse" or "line break," producing a continuous block of text instead.
+*   **The Prompt Effect:** We prompted the model with *"Ej joł"* (a slang term frequent in Tede's lyrics but absent in Wikipedia). Interestingly, the model generated a single line break immediately after this prompt (likely recognizing the token from fine-tuning) — **a behavior consistent across all 3 generated samples** — but then immediately reverted to its "default" prose mode for the rest of the output.
+*   **Conclusion:** 4 epochs are not enough to overwrite the strong "encyclopedic memory" of the base model. To force it to adopt the visual structure of a song, we need significantly more training steps (overfitting) to "break" its formal habits.
+
+**Output Example (Overfitted - "The Stylist"):** ([`assets/hf_model/output/output2.txt`](assets/hf_model/output/output2.txt))
+*   **Context:** Here's the effect after 50 epochs. The loss also fell drastically from 3.36 to 0.02.
 ```text
 Wiecie rap ma przede mną szerokie pole do popisu
 Wiem kto jest Kto lepszy od kogo o kim aktualnie piszę
@@ -116,11 +133,15 @@ Drinki mu dają po dupie pije dalej przez tydzień
 ```
 
 **Observations:**
-*   **Semantic Coherence:** Unlike previous models, these sentences have logical meaning. The model describes a scene (club, people, evening) rather than just vomiting words.
-*   **The "Hip-Hop Cadence":** It manipulates larger rhythmic units than the char-model. Notice the **slant rhyme** (assonance) of *Drinkiem* (drink-yem) vs *Tydzień* (ti-jen). This is a sophisticated imperfect rhyme typical of modern rap flow, which a character model looking for exact text matches would never attempt.
+*   **Semantic Coherence:** Unlike previous models, these sentences have logical meaning. The model describes a scene (club, people, evening) rather than just vomiting words, but shifts between them chaotically like a dream.Nonetheless it does lose context instantly, this model links concepts across lines. Line 7 ends with *"Drinkiem"*, and Line 8 immediately picks up with *"Drinki"* (and relates to a person from previus line), showing its understanding how can maintain a context.
+*   **The "Hip-Hop Cadence":** 
+    It manipulates larger rhythmic units than the char-model:
+    * **Slant rhyme** (assonance) of *Drinkiem* (drink-yem) vs *Tydzień* (ti-jen). This is a sophisticated imperfect rhyme which a character model looking for exact text matches would never attempt.
+    * **Consonance:** *Popisu* vs *Piszę*. Though the endings differ, the phonetic skeleton (P-P-S vs P-Sz) is nearly identical.
+    * **Alliteration:** *"Wiem **k**to jest **K**to lepszy od **k**ogo o **k**im..."* — a flow technique used to build rhythm within a line.
 *   **Style Transfer & Overfitting:**
     *   Initially (output1), the model suffered from "Wiki-Bias", struggling to stop being formal.
-    *   By aggressively **overfitting** (50 epochs) with high weight decay, we forced a complete persona switch. The model successfully adopted specific slang (*"bauns"*, *"grrryatem"*) and entities, effectively "forgetting" its encyclopedic nature to become a rapper.
+    *   By aggressively **overfitting** (50 epochs) with high weight decay, we forced a complete persona switch. The model successfully adopted entities, effectively "forgetting" its encyclopedic nature to become a rapper.
 *   **Trade-off (Visuals):** While semantically superior, this model struggles slightly with the *visual discipline* of the char-model. It sometimes drifts into long, run-on sentences or prose-like structures ("stream of consciousness") because its base training (Wikipedia) wasn't formatted as poetry. It prioritizes *saying something* over *looking like a song*.
 
 ## Usage
@@ -135,16 +156,35 @@ pip install -r requirements.txt
 
 **Level 1: Train & Generate (Character-Level)**
 ```bash
-python gpt.py --input assets/input/input2.txt --max_iters 5000
+python gpt.py --input assets/input/input2.txt \
+              --batch_size 64 \
+              --block_size 256 \
+              --max_iters 5000 \
+              --learning_rate 3e-4 \
+              --output assets/char_model/output.txt
 ```
 
-**Level 2: Train & Generate (Tiktoken)**
+**Level 2: Train & Generate (BPE / Tiktoken)**
 ```bash
-python gpt_tiktoken.py --input assets/input/input2.txt --max_iters 5000
+# pick a --tokenizer yourself
+python gpt_tiktoken.py --tokenizer tiktoken \
+                       --input assets/input/input2.txt \
+                       --max_iters 2000 \
+                       --batch_size 32
 ```
 
-**Level 3: Fine-Tune (Hugging Face)**
+**Level 3: Fine-Tune (Hugging Face / PapuGaPT2)**
 ```bash
-python gpt_hf.py --input assets/input/input2.txt --epochs 3
+python gpt_hf.py --input assets/input/input2.txt \
+                 --model_name flax-community/papuGaPT2 \
+                 --epochs 50 \
+                 --block_size 256 \
+                 --learning_rate 5e-5 \
+                 --prompt "Ej joł"
 ```
-TO DO: dodac contributions dla Karpathy'ego
+## Acknowledgements
+The architecture of the base character-level model (`gpt.py`) is derived from the model built during **Andrej Karpathy's** [Let's build GPT: from scratch, in code, spelled out](https://github.com/karpathy/nn-zero-to-hero) lecture, with additional modifications implemented for this project. The following models were developed by myself.
+
+The pre-trained model used for the Hugging Face transfer learning experiment is [**PapuGaPT2**](https://huggingface.co/flax-community/papuGaPT2), developed by the **Flax Community**.
+
+I would also like to thank my university lecturer, **Maciej Switała**, for the opportunity to discuss the project results. 

@@ -1,3 +1,7 @@
+To take over the wikipedia run, I increased the epoch number over 10x to kind of overfit on purpose as only way
+to outnumber the wiki-weights. Also, I set the weight_decay aggresively to 0.1 (also x10 increase).
+
+
 Using device: cuda
 Loading base model: flax-community/papuGaPT2
 tokenizer_config.json: 100% 208/208 [00:00<00:00, 380B/s]
@@ -3531,7 +3535,8 @@ Ale serio sztuka czasami trafiają traficzki ziomki wspomiano cepemJuż wiesz kt
 Sample 3:
 --------------------
 Ej joł, to jest remix Sygnały
-Szampan przede wszystkim przyjmuję w ustachTen wieczór był szampanem!
+Szampan przede wszystkim przyjmuję w ustach
+Ten wieczór był szampanem!
 To jest dopiero hit heartlin asic one
 Nie może być tak nie super
 Naszej-tamowane
