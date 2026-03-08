@@ -1,10 +1,10 @@
-# Mlody-GTP
+# Young-GTP
 ### From Scratch to Pretrained: A Study in Training Small Language Models
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat-square&logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-red?style=flat-square&logo=pytorch&logoColor=white) ![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Transformers-yellow?style=flat-square&logo=huggingface&logoColor=white) ![Google Colab](https://img.shields.io/badge/Google%20Colab-Computational%20Power-F9AB00?style=flat-square&logo=googlecolab&logoColor=white) ![OpenAI](https://img.shields.io/badge/OpenAI-Tokenizer-green?style=flat-square&logo=openai&logoColor=white)
 
 ## Introduction
-**Mlody-GTP** is a project focused on building a simple Generative Pre-trained Transformer (GPT) from scratch, featuring a manual implementation of the **self-attention** mechanism. The experiment utilizes a self-collected dataset containing the complete discography of Polish rapper **Tede**, concatenated into a single text file.
+**Young-GTP** is a project focused on building a simple Generative Pre-trained Transformer (GPT) from scratch, featuring a manual implementation of the **self-attention** mechanism. The experiment utilizes a self-collected dataset containing the complete discography of Polish rapper **Tede**, concatenated into a single text file.
 
 The primary objective is to investigate whether a model built entirely from the ground up can learn to generate text resembling the Polish language in a song-like manner. Since the model starts with no prior knowledge and operates on individual characters, it must effectively learn how to assemble letters into valid words and syntax. 
 
@@ -187,4 +187,4 @@ The architecture of the base character-level model (`gpt.py`) is derived from th
 
 The pre-trained model used for the Hugging Face transfer learning experiment is [**PapuGaPT2**](https://huggingface.co/flax-community/papuGaPT2), developed by the **Flax Community**.
 
-I would also like to thank my university lecturer, **Maciej Switała**, for the opportunity to discuss the project results. 
+I would also like to thank my university lecturer, dr. **Maciej Switała**, for the opportunity to discuss the project results. 
