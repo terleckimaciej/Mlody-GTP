@@ -1,3 +1,5 @@
+<img src="./assets/images/tede.png" alt="Tede" width="50%" />
+
 # Young-GTP
 ### From Scratch to Pretrained: A Study in Training Small Language Models
 
@@ -35,7 +37,8 @@ This project represents an evolution of understanding—from learning the shapes
 Chłopaki z klałki, taki za mną
 Lalk dawno punkt ci, towarli mno
 Patrzę nowa w nas weekend wapno
-A llub Cicho, liczą się za mną...
+A llub Cicho, liczą się za mną
+A to nie pytasz wie-o, z nimi z klatką...
 ```
 
 **Observations:**
@@ -59,7 +62,7 @@ A llub Cicho, liczą się za mną...
     ```text
     Pij robię swój w to i rap grzejmij
     Ona ma, rozprowadz mi, jest mi i prawdzmat, a ja jestem
-    I widzę jestem dziś mówię to za rzeczy zapórz
+    I widzę jestem dziś mówię to za rzeczy zapórz...
     ```
 *   **Observations:** 
     *   **The "Sparsity" Crash:** By increasing the vocabulary to 50,000 tokens while keeping the dataset small (~1MB), the average **examples per token dropped drastically**. The model has too many "slots" to fill and not enough data to learn the relationships between them.
@@ -70,7 +73,7 @@ A llub Cicho, liczą się za mną...
 *   **Why this choice:** To combat the "sparsity crash," we trained a custom tokenizer specifically on our dataset with a drastically reduced vocabulary (2-5k tokens). The hypothesis was that eliminating unused English tokens and shrinking the dictionary would ensure each token appears frequently enough for the model to learn it.
 *   **Output Example:** ([`assets/tiktoken_model/output/output4.txt`](assets/tiktoken_model/output/output4.txt))
     ```text
-    ka chęć twoje ruchają tam 1600! Tak to lecę ogólnie go zamimieli spe ały czas
+    ka chęć twoje ruchają tam 1600! Tak to lecę ogólnie go zamimieli spe ały czas...
     ```
 *   **Observations:** 
     *   **The Paradox of Compression:** In BPE, a smaller vocabulary forces the tokenizer to be more aggressive. It can only "afford" to store the most frequent sub-units. Since full words (like *"samochód"*) are rarer than their building blocks (letters/syllables like *"sa"*, *"mo"*), the tokenizer discards full words to save space.
@@ -124,12 +127,11 @@ Jestem Tuzin Gibka co to za mafia ta i inne bauns'y na eBayu! Buhhh- buuuuhahaha
 ```text
 Wiecie rap ma przede mną szerokie pole do popisu
 Wiem kto jest Kto lepszy od kogo o kim aktualnie piszę
-Do pokoju wchodzi fajna dziewczyna z działu panowie
-Dziewczyny mi nie urwą więc monitor mam wypchnięty
+(...))
 Kolesie są nieco umęczeni wczorajszym wieczorem
 Panowie co ich hartuje to co słabe to co co dobre
 Z klubu wychodzi facet w białym płaszczyku popite już Drinkiem
-Drinki mu dają po dupie pije dalej przez tydzień
+Drinki mu dają po dupie pije dalej przez tydzień...
 ```
 
 **Observations:**
@@ -182,7 +184,8 @@ Mlody-GTP/
     └── hf_model/            # Stage 3 artifacts (Fine-tuned PapuGaPT2)
         ├── model.safetensors # Fine-tuned model weights
         ├── tokenizer.json   # Tokenizer configuration
-        └── output/          # Samples from different training epochs (4 vs 50) demonstrating the progression
+        └── output/          # Samples from different training epochs(4 vs 50)
+                               demonstrating the progression
 ```
 
 ## Usage
