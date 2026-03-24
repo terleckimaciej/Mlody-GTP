@@ -1,4 +1,4 @@
-<img src="./assets/images/tede.png" alt="Tede" width="50%" />
+<img src="./assets/images/tede.png" width="50%" />
 
 # Young-GTP
 ### From Scratch to Pretrained: A Study in Training Small Language Models
